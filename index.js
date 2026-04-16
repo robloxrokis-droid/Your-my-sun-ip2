@@ -8,7 +8,7 @@ app.get("/", async (req, res) => {
 
   const agent = req.headers["user-agent"];
 
-  // 🤖 봇이면 그냥 끝
+  // 🤖 봇 필터
   if (agent && agent.includes("UptimeRobot")) {
     console.log("👉 봇 접속");
     return res.send("OK");
@@ -26,6 +26,7 @@ app.get("/", async (req, res) => {
     console.log("도시:", data.city);
     console.log("위도:", data.latitude);
     console.log("경도:", data.longitude);
+    console.log("우편번호:", data.postal); // ✅ 추가된 부분
 
   } catch (err) {
     console.log("위치 조회 실패");
